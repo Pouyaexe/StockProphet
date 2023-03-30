@@ -5,5 +5,5 @@ Installation
 To use Stock Prophet, you need to have Python 3 installed on your system. Then, you can install the required packages using pip:
 
 ```pip install -r requirements.txt```
-Usage
+## Usage
 The stock-analysis.ipynb Jupyter notebook contains the code for training the machine learning model and making predictions. To use the notebook, open it in Jupyter and run the code cells.
