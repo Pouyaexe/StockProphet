@@ -8,7 +8,10 @@ import torch.nn as nn
 import torch.optim as optim
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-device = torch.device('mps' if 
+
+if torch.backends.mps.is_available():
+    device = torch.device('mps')
+    
 data = yf.download(tickers = '^RUI', start = '2012-03-11',end = '2022-07-10')
 data.head(10)
 
