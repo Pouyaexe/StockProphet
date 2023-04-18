@@ -6,6 +6,8 @@ import pandas_ta as ta
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from sklearn.preprocessing import MinMaxScaler
+
 
 # Download the data
 data = yf.download(tickers='^RUI', start='2012-03-11', end='2022-07-10')
