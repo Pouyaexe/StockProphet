@@ -91,12 +91,22 @@ for epoch in range(epochs):
     loss = criterion(outputs, torch.Tensor(y_train))
     loss.backward()
     optimizer.step()
-    losses.append(loss.item())
-    print(f'epoch: {epoch + 1}, loss = {loss.item():.8f}')
-    
+    if epoch % 5 == 0:
+        print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, epochs, loss.item()))
 
-plt.plot(range(epochs), losses)
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
+# Convert numpy arrays to PyTorch tensors
+X_test_tensor = torch.Tensor(X_test)
+y_test_tensor = torch.Tensor(y_test)
+
+# Make predictions on the test set
+with torch.no_grad():
+    y_pred_tensor = model(X_test_tensor.to(device))
+    y_pred = y_pred_tensor.cpu().numpy()
+
+# Plot the results
+plt.figure(figsize=(16,8))
+plt.plot(y_test, color='black', label='Test')
+plt.plot(y_pred, color='green', label='Pred')
+plt.legend()
 plt.show()
 
