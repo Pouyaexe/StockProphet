@@ -77,6 +77,8 @@ class LSTM(nn.Module):
         out = self.fc1(out[:, -1, :])
         return out
 
+
+
 input_dim = 8
 hidden_dim = 150
 num_layers = 1
@@ -105,7 +107,7 @@ y_test_tensor = torch.Tensor(y_test)
 
 # Make predictions on the test set
 with torch.no_grad():
-    y_pred_tensor = model(X_test_tensor.to(device))
+    y_pred_tensor = model(X_test_tensor)
     y_pred = y_pred_tensor.cpu().numpy()
 
 # Plot the results
