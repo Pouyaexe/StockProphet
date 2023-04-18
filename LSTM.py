@@ -89,3 +89,14 @@ for epoch in range(epochs):
     optimizer.zero_grad()
     outputs = model(torch.Tensor(X_train))
     loss = criterion(outputs, torch.Tensor(y_train))
+    loss.backward()
+    optimizer.step()
+    losses.append(loss.item())
+    print(f'epoch: {epoch + 1}, loss = {loss.item():.8f}')
+    
+
+plt.plot(range(epochs), losses)
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.show()
+
